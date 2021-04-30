@@ -1,0 +1,36 @@
+{
+    "dataset_reader": {
+        "type": "name_dataset"
+    },
+    "model": {
+        "type": "namegen",
+        "bidirectional": true,
+        "contextualizer": {
+            "type": "lstm",
+            "bidirectional": true,
+            "dropout": 0.1,
+            "hidden_size": 64,
+            "input_size": 16,
+            "num_layers": 1
+        },
+        "sparse_embeddings": false,
+        "text_field_embedder": {
+            "token_embedders": {
+                "tokens": {
+                    "type": "embedding",
+                    "embedding_dim": 16
+                }
+            }
+        }
+    },
+    "train_data_path": "./data/first_names.all.txt",
+    "trainer": {
+        "num_epochs": 10,
+        "optimizer": {
+            "type": "adamw"
+        }
+    },
+    "data_loader": {
+        "batch_size": 16
+    }
+}

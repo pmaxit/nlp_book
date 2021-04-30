@@ -1,1 +1,3 @@
-# nlp_book
+# Welcome to NLP Book 
+
+This hosts the repository for all my NLP experiments. New style
