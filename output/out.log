@@ -1,203 +1,54 @@
-2021-04-29 13:10:08,136 - INFO - allennlp.common.params - random_seed = 13370
-2021-04-29 13:10:08,137 - INFO - allennlp.common.params - numpy_seed = 1337
-2021-04-29 13:10:08,137 - INFO - allennlp.common.params - pytorch_seed = 133
-2021-04-29 13:10:08,140 - INFO - allennlp.common.checks - Pytorch version: 1.7.1
-2021-04-29 13:10:08,140 - INFO - allennlp.common.params - type = default
-2021-04-29 13:10:08,141 - INFO - allennlp.common.params - dataset_reader.type = name_dataset
-2021-04-29 13:10:08,141 - INFO - allennlp.common.params - dataset_reader.max_instances = None
-2021-04-29 13:10:08,141 - INFO - allennlp.common.params - dataset_reader.manual_distributed_sharding = False
-2021-04-29 13:10:08,141 - INFO - allennlp.common.params - dataset_reader.manual_multiprocess_sharding = False
-2021-04-29 13:10:08,141 - INFO - allennlp.common.params - dataset_reader.tokenizer = None
-2021-04-29 13:10:08,141 - INFO - allennlp.common.params - dataset_reader.token_indexers = None
-2021-04-29 13:10:08,141 - INFO - allennlp.common.params - dataset_reader.max_tokens = None
-2021-04-29 13:10:08,142 - INFO - allennlp.common.params - train_data_path = ./data/first_names.all.txt
-2021-04-29 13:10:08,142 - INFO - allennlp.common.params - vocabulary = <allennlp.common.lazy.Lazy object at 0x15884edc0>
-2021-04-29 13:10:08,142 - INFO - allennlp.common.params - datasets_for_vocab_creation = None
-2021-04-29 13:10:08,142 - INFO - allennlp.common.params - validation_dataset_reader = None
-2021-04-29 13:10:08,143 - INFO - allennlp.common.params - validation_data_path = None
-2021-04-29 13:10:08,143 - INFO - allennlp.common.params - validation_data_loader = None
-2021-04-29 13:10:08,143 - INFO - allennlp.common.params - test_data_path = None
-2021-04-29 13:10:08,143 - INFO - allennlp.common.params - evaluate_on_test = False
-2021-04-29 13:10:08,143 - INFO - allennlp.common.params - batch_weight_key = 
-2021-04-29 13:10:08,143 - INFO - allennlp.common.params - data_loader.type = multiprocess
-2021-04-29 13:10:08,143 - INFO - allennlp.common.params - data_loader.batch_size = 16
-2021-04-29 13:10:08,143 - INFO - allennlp.common.params - data_loader.drop_last = False
-2021-04-29 13:10:08,143 - INFO - allennlp.common.params - data_loader.shuffle = False
-2021-04-29 13:10:08,144 - INFO - allennlp.common.params - data_loader.batch_sampler = None
-2021-04-29 13:10:08,144 - INFO - allennlp.common.params - data_loader.batches_per_epoch = None
-2021-04-29 13:10:08,144 - INFO - allennlp.common.params - data_loader.num_workers = 0
-2021-04-29 13:10:08,144 - INFO - allennlp.common.params - data_loader.max_instances_in_memory = None
-2021-04-29 13:10:08,144 - INFO - allennlp.common.params - data_loader.start_method = fork
-2021-04-29 13:10:08,144 - INFO - allennlp.common.params - data_loader.cuda_device = None
-2021-04-29 13:10:08,144 - INFO - allennlp.common.params - data_loader.quiet = False
-2021-04-29 13:10:08,154 - INFO - tqdm - loading instances: 0it [00:00, ?it/s]
-2021-04-29 13:10:11,312 - INFO - allennlp.common.params - type = from_instances
-2021-04-29 13:10:11,312 - INFO - allennlp.common.params - min_count = None
-2021-04-29 13:10:11,313 - INFO - allennlp.common.params - max_vocab_size = None
-2021-04-29 13:10:11,313 - INFO - allennlp.common.params - non_padded_namespaces = ('*tags', '*labels')
-2021-04-29 13:10:11,313 - INFO - allennlp.common.params - pretrained_files = None
-2021-04-29 13:10:11,313 - INFO - allennlp.common.params - only_include_pretrained_words = False
-2021-04-29 13:10:11,313 - INFO - allennlp.common.params - tokens_to_add = None
-2021-04-29 13:10:11,313 - INFO - allennlp.common.params - min_pretrained_embeddings = None
-2021-04-29 13:10:11,313 - INFO - allennlp.common.params - padding_token = @@PADDING@@
-2021-04-29 13:10:11,313 - INFO - allennlp.common.params - oov_token = @@UNKNOWN@@
-2021-04-29 13:10:11,313 - INFO - allennlp.data.vocabulary - Fitting token dictionary from dataset.
-2021-04-29 13:10:11,314 - INFO - tqdm - building vocab: 0it [00:00, ?it/s]
-2021-04-29 13:10:11,987 - INFO - allennlp.common.params - model.type = namegen
-2021-04-29 13:10:11,987 - INFO - allennlp.common.params - model.regularizer = None
-2021-04-29 13:10:11,988 - INFO - allennlp.common.params - model.text_field_embedder.type = basic
-2021-04-29 13:10:11,988 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.type = embedding
-2021-04-29 13:10:11,988 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.embedding_dim = 16
-2021-04-29 13:10:11,988 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.num_embeddings = None
-2021-04-29 13:10:11,988 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.projection_dim = None
-2021-04-29 13:10:11,988 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.weight = None
-2021-04-29 13:10:11,988 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.padding_index = None
-2021-04-29 13:10:11,989 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.trainable = True
-2021-04-29 13:10:11,989 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.max_norm = None
-2021-04-29 13:10:11,989 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.norm_type = 2.0
-2021-04-29 13:10:11,989 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.scale_grad_by_freq = False
-2021-04-29 13:10:11,989 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.sparse = False
-2021-04-29 13:10:11,989 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.vocab_namespace = tokens
-2021-04-29 13:10:11,989 - INFO - allennlp.common.params - model.text_field_embedder.token_embedders.tokens.pretrained_file = None
-2021-04-29 13:10:11,990 - INFO - allennlp.common.params - model.contextualizer.type = lstm
-2021-04-29 13:10:11,990 - INFO - allennlp.common.params - model.contextualizer.input_size = 16
-2021-04-29 13:10:11,990 - INFO - allennlp.common.params - model.contextualizer.hidden_size = 64
-2021-04-29 13:10:11,990 - INFO - allennlp.common.params - model.contextualizer.num_layers = 1
-2021-04-29 13:10:11,990 - INFO - allennlp.common.params - model.contextualizer.bias = True
-2021-04-29 13:10:11,991 - INFO - allennlp.common.params - model.contextualizer.dropout = 0.1
-2021-04-29 13:10:11,991 - INFO - allennlp.common.params - model.contextualizer.bidirectional = True
-2021-04-29 13:10:11,991 - INFO - allennlp.common.params - model.contextualizer.stateful = False
-2021-04-29 13:10:11,994 - INFO - allennlp.common.params - model.dropout = 0.0
-2021-04-29 13:10:11,994 - INFO - allennlp.common.params - model.num_samples = None
-2021-04-29 13:10:11,994 - INFO - allennlp.common.params - model.sparse_embeddings = False
-2021-04-29 13:10:11,994 - INFO - allennlp.common.params - model.bidirectional = True
-2021-04-29 13:10:11,994 - INFO - allennlp.common.params - model.initializer = <allennlp.nn.initializers.InitializerApplicator object at 0x158bac280>
-2021-04-29 13:10:11,995 - INFO - allennlp.nn.initializers - Initializing parameters
-2021-04-29 13:10:11,995 - INFO - allennlp.nn.initializers - Done initializing parameters; the following parameters are using their default initialization from their code
-2021-04-29 13:10:11,995 - INFO - allennlp.nn.initializers -    _contextualizer._module.bias_hh_l0
-2021-04-29 13:10:11,995 - INFO - allennlp.nn.initializers -    _contextualizer._module.bias_hh_l0_reverse
-2021-04-29 13:10:11,995 - INFO - allennlp.nn.initializers -    _contextualizer._module.bias_ih_l0
-2021-04-29 13:10:11,995 - INFO - allennlp.nn.initializers -    _contextualizer._module.bias_ih_l0_reverse
-2021-04-29 13:10:11,995 - INFO - allennlp.nn.initializers -    _contextualizer._module.weight_hh_l0
-2021-04-29 13:10:11,995 - INFO - allennlp.nn.initializers -    _contextualizer._module.weight_hh_l0_reverse
-2021-04-29 13:10:11,995 - INFO - allennlp.nn.initializers -    _contextualizer._module.weight_ih_l0
-2021-04-29 13:10:11,995 - INFO - allennlp.nn.initializers -    _contextualizer._module.weight_ih_l0_reverse
-2021-04-29 13:10:11,996 - INFO - allennlp.nn.initializers -    _softmax_loss.softmax_b
-2021-04-29 13:10:11,996 - INFO - allennlp.nn.initializers -    _softmax_loss.softmax_w
-2021-04-29 13:10:11,996 - INFO - allennlp.nn.initializers -    _text_field_embedder.token_embedder_tokens.weight
-2021-04-29 13:10:13,291 - INFO - allennlp.common.params - trainer.type = gradient_descent
-2021-04-29 13:10:13,292 - INFO - allennlp.common.params - trainer.patience = None
-2021-04-29 13:10:13,292 - INFO - allennlp.common.params - trainer.validation_metric = -loss
-2021-04-29 13:10:13,292 - INFO - allennlp.common.params - trainer.num_epochs = 10
-2021-04-29 13:10:13,292 - INFO - allennlp.common.params - trainer.cuda_device = None
-2021-04-29 13:10:13,292 - INFO - allennlp.common.params - trainer.grad_norm = None
-2021-04-29 13:10:13,292 - INFO - allennlp.common.params - trainer.grad_clipping = None
-2021-04-29 13:10:13,292 - INFO - allennlp.common.params - trainer.distributed = False
-2021-04-29 13:10:13,292 - INFO - allennlp.common.params - trainer.world_size = 1
-2021-04-29 13:10:13,292 - INFO - allennlp.common.params - trainer.num_gradient_accumulation_steps = 1
-2021-04-29 13:10:13,292 - INFO - allennlp.common.params - trainer.use_amp = False
-2021-04-29 13:10:13,293 - INFO - allennlp.common.params - trainer.no_grad = None
-2021-04-29 13:10:13,293 - INFO - allennlp.common.params - trainer.learning_rate_scheduler = None
-2021-04-29 13:10:13,293 - INFO - allennlp.common.params - trainer.momentum_scheduler = None
-2021-04-29 13:10:13,293 - INFO - allennlp.common.params - trainer.moving_average = None
-2021-04-29 13:10:13,293 - INFO - allennlp.common.params - trainer.checkpointer = <allennlp.common.lazy.Lazy object at 0x158830b50>
-2021-04-29 13:10:13,293 - INFO - allennlp.common.params - trainer.callbacks = None
-2021-04-29 13:10:13,293 - INFO - allennlp.common.params - trainer.enable_default_callbacks = True
-2021-04-29 13:10:13,293 - INFO - allennlp.common.params - trainer.run_sanity_checks = True
-2021-04-29 13:10:13,294 - INFO - allennlp.common.params - trainer.optimizer.type = adamw
-2021-04-29 13:10:13,294 - INFO - allennlp.common.params - trainer.optimizer.parameter_groups = None
-2021-04-29 13:10:13,294 - INFO - allennlp.common.params - trainer.optimizer.lr = 0.001
-2021-04-29 13:10:13,294 - INFO - allennlp.common.params - trainer.optimizer.betas = (0.9, 0.999)
-2021-04-29 13:10:13,294 - INFO - allennlp.common.params - trainer.optimizer.eps = 1e-08
-2021-04-29 13:10:13,294 - INFO - allennlp.common.params - trainer.optimizer.weight_decay = 0.01
-2021-04-29 13:10:13,294 - INFO - allennlp.common.params - trainer.optimizer.amsgrad = False
-2021-04-29 13:10:13,294 - INFO - allennlp.training.optimizers - Number of trainable parameters: 53162
-2021-04-29 13:10:13,295 - INFO - allennlp.common.util - The following parameters are Frozen (without gradient):
-2021-04-29 13:10:13,295 - INFO - allennlp.common.util - The following parameters are Tunable (with gradient):
-2021-04-29 13:10:13,295 - INFO - allennlp.common.util - _text_field_embedder.token_embedder_tokens.weight
-2021-04-29 13:10:13,295 - INFO - allennlp.common.util - _contextualizer._module.weight_ih_l0
-2021-04-29 13:10:13,295 - INFO - allennlp.common.util - _contextualizer._module.weight_hh_l0
-2021-04-29 13:10:13,295 - INFO - allennlp.common.util - _contextualizer._module.bias_ih_l0
-2021-04-29 13:10:13,295 - INFO - allennlp.common.util - _contextualizer._module.bias_hh_l0
-2021-04-29 13:10:13,295 - INFO - allennlp.common.util - _contextualizer._module.weight_ih_l0_reverse
-2021-04-29 13:10:13,295 - INFO - allennlp.common.util - _contextualizer._module.weight_hh_l0_reverse
-2021-04-29 13:10:13,296 - INFO - allennlp.common.util - _contextualizer._module.bias_ih_l0_reverse
-2021-04-29 13:10:13,296 - INFO - allennlp.common.util - _contextualizer._module.bias_hh_l0_reverse
-2021-04-29 13:10:13,296 - INFO - allennlp.common.util - _softmax_loss.softmax_w
-2021-04-29 13:10:13,296 - INFO - allennlp.common.util - _softmax_loss.softmax_b
-2021-04-29 13:10:13,296 - INFO - allennlp.common.params - type = default
-2021-04-29 13:10:13,296 - INFO - allennlp.common.params - keep_serialized_model_every_num_seconds = None
-2021-04-29 13:10:13,296 - INFO - allennlp.common.params - num_serialized_models_to_keep = 2
-2021-04-29 13:10:13,296 - INFO - allennlp.common.params - model_save_interval = None
-2021-04-29 13:10:13,297 - INFO - allennlp.training.trainer - Beginning training.
-2021-04-29 13:10:13,297 - INFO - allennlp.training.trainer - Epoch 0/9
-2021-04-29 13:10:13,297 - INFO - allennlp.training.trainer - Worker 0 memory usage: 540M
-2021-04-29 13:10:13,297 - INFO - allennlp.training.trainer - Training
-2021-04-29 13:10:13,297 - INFO - tqdm - 0%|          | 0/10279 [00:00<?, ?it/s]
-2021-04-29 13:10:23,382 - INFO - tqdm - perplexity: 23.2217, batch_loss: 3.0883, loss: 3.1451 ||:   8%|8         | 860/10279 [00:10<01:48, 87.07it/s]
-2021-04-29 13:10:33,423 - INFO - tqdm - perplexity: 21.2607, batch_loss: 2.6341, loss: 3.0569 ||:  15%|#5        | 1588/10279 [00:20<02:08, 67.81it/s]
-2021-04-29 13:10:43,498 - INFO - tqdm - perplexity: 19.4411, batch_loss: 2.4054, loss: 2.9674 ||:  21%|##1       | 2185/10279 [00:30<01:56, 69.38it/s]
-2021-04-29 13:10:53,584 - INFO - tqdm - perplexity: 18.5412, batch_loss: 2.8931, loss: 2.9200 ||:  28%|##7       | 2847/10279 [00:40<01:44, 71.24it/s]
-2021-04-29 13:11:03,683 - INFO - tqdm - perplexity: 18.1565, batch_loss: 3.1149, loss: 2.8990 ||:  34%|###4      | 3525/10279 [00:50<01:44, 64.90it/s]
-2021-04-29 13:11:13,750 - INFO - tqdm - perplexity: 18.0502, batch_loss: 2.6563, loss: 2.8932 ||:  41%|####1     | 4225/10279 [01:00<01:13, 81.90it/s]
-2021-04-29 13:11:23,841 - INFO - tqdm - perplexity: 17.2031, batch_loss: 2.3367, loss: 2.8451 ||:  48%|####8     | 4945/10279 [01:10<01:15, 70.64it/s]
-2021-04-29 13:11:33,951 - INFO - tqdm - perplexity: 16.6448, batch_loss: 3.1132, loss: 2.8121 ||:  55%|#####5    | 5662/10279 [01:20<01:04, 71.88it/s]
-2021-04-29 13:11:44,056 - INFO - tqdm - perplexity: 16.1621, batch_loss: 2.8641, loss: 2.7827 ||:  62%|######2   | 6394/10279 [01:30<00:54, 71.20it/s]
-2021-04-29 13:11:54,115 - INFO - tqdm - perplexity: 15.9302, batch_loss: 2.8530, loss: 2.7682 ||:  70%|######9   | 7148/10279 [01:40<00:38, 81.65it/s]
-2021-04-29 13:12:04,159 - INFO - tqdm - perplexity: 15.8750, batch_loss: 3.6188, loss: 2.7647 ||:  77%|#######7  | 7919/10279 [01:50<00:28, 82.48it/s]
-2021-04-29 13:12:14,237 - INFO - tqdm - perplexity: 15.4737, batch_loss: 3.5438, loss: 2.7391 ||:  85%|########4 | 8709/10279 [02:00<00:18, 84.81it/s]
-2021-04-29 13:12:24,283 - INFO - tqdm - perplexity: 15.4106, batch_loss: 2.4755, loss: 2.7351 ||:  92%|#########1| 9414/10279 [02:10<00:12, 67.40it/s]
-2021-04-29 13:12:34,296 - INFO - tqdm - perplexity: 15.3672, batch_loss: 2.9092, loss: 2.7322 ||:  99%|#########9| 10206/10279 [02:20<00:00, 83.17it/s]
-2021-04-29 13:12:34,612 - INFO - tqdm - perplexity: 15.3710, batch_loss: 2.6541, loss: 2.7325 ||: 100%|#########9| 10234/10279 [02:21<00:00, 85.79it/s]
-2021-04-29 13:12:34,714 - INFO - tqdm - perplexity: 15.3688, batch_loss: 2.5453, loss: 2.7323 ||: 100%|#########9| 10243/10279 [02:21<00:00, 86.54it/s]
-2021-04-29 13:12:34,821 - INFO - tqdm - perplexity: 15.3879, batch_loss: 4.1473, loss: 2.7336 ||: 100%|#########9| 10252/10279 [02:21<00:00, 85.88it/s]
-2021-04-29 13:12:34,929 - INFO - tqdm - perplexity: 15.4039, batch_loss: 3.6593, loss: 2.7346 ||: 100%|#########9| 10262/10279 [02:21<00:00, 87.68it/s]
-2021-04-29 13:12:35,038 - INFO - tqdm - perplexity: 15.4159, batch_loss: 3.4938, loss: 2.7354 ||: 100%|#########9| 10271/10279 [02:21<00:00, 86.12it/s]
-2021-04-29 13:12:35,137 - INFO - tqdm - perplexity: 15.4666, batch_loss: 11.5356, loss: 2.7387 ||: 100%|##########| 10279/10279 [02:21<00:00, 72.47it/s]
-2021-04-29 13:12:35,142 - INFO - allennlp.training.checkpointer - Best validation performance so far. Copying weights to 'output/best.th'.
-2021-04-29 13:12:35,143 - INFO - allennlp.training.callbacks.console_logger -                        Training |  Validation
-2021-04-29 13:12:35,143 - INFO - allennlp.training.callbacks.console_logger - loss               |     2.739  |       N/A
-2021-04-29 13:12:35,143 - INFO - allennlp.training.callbacks.console_logger - perplexity         |    15.467  |       N/A
-2021-04-29 13:12:35,143 - INFO - allennlp.training.callbacks.console_logger - worker_0_memory_MB |   540.180  |       N/A
-2021-04-29 13:12:35,143 - INFO - allennlp.training.trainer - Epoch duration: 0:02:21.846696
-2021-04-29 13:12:35,144 - INFO - allennlp.training.trainer - Estimated training time remaining: 0:21:16
-2021-04-29 13:12:35,144 - INFO - allennlp.training.trainer - Epoch 1/9
-2021-04-29 13:12:35,144 - INFO - allennlp.training.trainer - Worker 0 memory usage: 550M
-2021-04-29 13:12:35,144 - INFO - allennlp.training.trainer - Training
-2021-04-29 13:12:35,144 - INFO - tqdm - 0%|          | 0/10279 [00:00<?, ?it/s]
-2021-04-29 13:12:45,220 - INFO - tqdm - perplexity: 13.0937, batch_loss: 2.1324, loss: 2.5721 ||:   7%|7         | 755/10279 [00:10<02:05, 75.80it/s]
-2021-04-29 13:12:55,248 - INFO - tqdm - perplexity: 13.4541, batch_loss: 3.1414, loss: 2.5993 ||:  14%|#4        | 1479/10279 [00:20<01:56, 75.34it/s]
-2021-04-29 13:13:05,330 - INFO - tqdm - perplexity: 12.7906, batch_loss: 2.1673, loss: 2.5487 ||:  21%|##1       | 2201/10279 [00:30<01:51, 72.31it/s]
-2021-04-29 13:13:15,360 - INFO - tqdm - perplexity: 12.8778, batch_loss: 2.5498, loss: 2.5555 ||:  28%|##8       | 2892/10279 [00:40<01:46, 69.13it/s]
-2021-04-29 13:13:25,430 - INFO - tqdm - perplexity: 13.1340, batch_loss: 2.5951, loss: 2.5752 ||:  34%|###4      | 3546/10279 [00:50<01:48, 61.84it/s]
-2021-04-29 13:13:35,442 - INFO - tqdm - perplexity: 13.3678, batch_loss: 2.3369, loss: 2.5929 ||:  42%|####1     | 4278/10279 [01:00<01:20, 74.71it/s]
-2021-04-29 13:13:45,467 - INFO - tqdm - perplexity: 13.0676, batch_loss: 2.2842, loss: 2.5701 ||:  48%|####8     | 4944/10279 [01:10<01:22, 64.91it/s]
-2021-04-29 13:13:55,566 - INFO - tqdm - perplexity: 12.9431, batch_loss: 2.3268, loss: 2.5606 ||:  54%|#####4    | 5592/10279 [01:20<01:16, 61.53it/s]
-2021-04-29 13:14:05,567 - INFO - tqdm - perplexity: 12.9107, batch_loss: 2.2826, loss: 2.5581 ||:  60%|######    | 6186/10279 [01:30<00:55, 73.33it/s]
-2021-04-29 13:14:15,638 - INFO - tqdm - perplexity: 12.8097, batch_loss: 2.2603, loss: 2.5502 ||:  66%|######6   | 6821/10279 [01:40<00:51, 66.57it/s]
-2021-04-29 13:14:25,673 - INFO - tqdm - perplexity: 12.9409, batch_loss: 3.3881, loss: 2.5604 ||:  73%|#######2  | 7455/10279 [01:50<00:42, 66.69it/s]
-2021-04-29 13:14:35,772 - INFO - tqdm - perplexity: 12.9459, batch_loss: 2.2286, loss: 2.5608 ||:  79%|#######8  | 8074/10279 [02:00<00:42, 51.40it/s]
-2021-04-29 13:14:45,838 - INFO - tqdm - perplexity: 12.8035, batch_loss: 3.0704, loss: 2.5497 ||:  85%|########4 | 8721/10279 [02:10<00:25, 62.06it/s]
-2021-04-29 13:14:55,928 - INFO - tqdm - perplexity: 12.8650, batch_loss: 2.0573, loss: 2.5545 ||:  91%|#########1| 9389/10279 [02:20<00:14, 60.90it/s]
-2021-04-29 13:15:06,020 - INFO - tqdm - perplexity: 12.9440, batch_loss: 2.2084, loss: 2.5606 ||:  99%|#########8| 10131/10279 [02:30<00:01, 84.61it/s]
-2021-04-29 13:15:07,221 - INFO - tqdm - perplexity: 12.9549, batch_loss: 2.6653, loss: 2.5615 ||: 100%|#########9| 10232/10279 [02:32<00:00, 83.13it/s]
-2021-04-29 13:15:07,321 - INFO - tqdm - perplexity: 12.9550, batch_loss: 2.4877, loss: 2.5615 ||: 100%|#########9| 10241/10279 [02:32<00:00, 84.95it/s]
-2021-04-29 13:15:07,426 - INFO - tqdm - perplexity: 12.9681, batch_loss: 4.3957, loss: 2.5625 ||: 100%|#########9| 10250/10279 [02:32<00:00, 85.30it/s]
-2021-04-29 13:15:07,532 - INFO - tqdm - perplexity: 12.9833, batch_loss: 3.7238, loss: 2.5637 ||: 100%|#########9| 10259/10279 [02:32<00:00, 84.95it/s]
-2021-04-29 13:15:07,637 - INFO - tqdm - perplexity: 12.9952, batch_loss: 3.5651, loss: 2.5646 ||: 100%|#########9| 10268/10279 [02:32<00:00, 85.18it/s]
-2021-04-29 13:15:07,749 - INFO - tqdm - perplexity: 13.0198, batch_loss: 11.0190, loss: 2.5665 ||: 100%|#########9| 10277/10279 [02:32<00:00, 83.74it/s]
-2021-04-29 13:15:07,773 - INFO - tqdm - perplexity: 13.0400, batch_loss: 10.1905, loss: 2.5680 ||: 100%|##########| 10279/10279 [02:32<00:00, 67.35it/s]
-2021-04-29 13:15:07,777 - INFO - allennlp.training.checkpointer - Best validation performance so far. Copying weights to 'output/best.th'.
-2021-04-29 13:15:07,777 - INFO - allennlp.training.callbacks.console_logger -                        Training |  Validation
-2021-04-29 13:15:07,777 - INFO - allennlp.training.callbacks.console_logger - loss               |     2.568  |       N/A
-2021-04-29 13:15:07,778 - INFO - allennlp.training.callbacks.console_logger - perplexity         |    13.040  |       N/A
-2021-04-29 13:15:07,778 - INFO - allennlp.training.callbacks.console_logger - worker_0_memory_MB |   549.953  |       N/A
-2021-04-29 13:15:07,778 - INFO - allennlp.training.trainer - Epoch duration: 0:02:32.634025
-2021-04-29 13:15:07,778 - INFO - allennlp.training.trainer - Estimated training time remaining: 0:19:37
-2021-04-29 13:15:07,778 - INFO - allennlp.training.trainer - Epoch 2/9
-2021-04-29 13:15:07,778 - INFO - allennlp.training.trainer - Worker 0 memory usage: 551M
-2021-04-29 13:15:07,778 - INFO - allennlp.training.trainer - Training
-2021-04-29 13:15:07,778 - INFO - tqdm - 0%|          | 0/10279 [00:00<?, ?it/s]
-2021-04-29 13:15:17,881 - INFO - tqdm - perplexity: 12.5151, batch_loss: 2.7150, loss: 2.5269 ||:   7%|7         | 761/10279 [00:10<01:58, 80.10it/s]
-2021-04-29 13:15:22,633 - INFO - root - Training interrupted by the user. Attempting to create a model archive using the current best epoch weights.
-2021-04-29 13:15:22,633 - INFO - allennlp.models.archival - archiving weights and vocabulary to output/model.tar.gz
+2021-04-30 13:56:10,216 - INFO - allennlp.common.params - random_seed = 13370
+2021-04-30 13:56:10,216 - INFO - allennlp.common.params - numpy_seed = 1337
+2021-04-30 13:56:10,216 - INFO - allennlp.common.params - pytorch_seed = 133
+2021-04-30 13:56:10,218 - INFO - allennlp.common.checks - Pytorch version: 1.7.1
+2021-04-30 13:56:10,218 - INFO - allennlp.common.params - type = default
+2021-04-30 13:56:10,218 - INFO - allennlp.common.params - dataset_reader.type = toxic
+2021-04-30 13:56:10,219 - INFO - allennlp.common.params - dataset_reader.max_length = 5000
+2021-04-30 13:56:10,219 - INFO - allennlp.common.params - dataset_reader.tokenizer = None
+2021-04-30 13:56:10,219 - INFO - allennlp.common.params - dataset_reader.token_indexers = None
+2021-04-30 13:56:10,219 - INFO - allennlp.common.params - dataset_reader.fill_in_empty_labels = False
+2021-04-30 13:56:10,859 - INFO - allennlp.common.params - train_data_path = data/toxic/train.csv
+2021-04-30 13:56:10,860 - INFO - allennlp.common.params - vocabulary = <allennlp.common.lazy.Lazy object at 0x15900ee80>
+2021-04-30 13:56:10,860 - INFO - allennlp.common.params - datasets_for_vocab_creation = None
+2021-04-30 13:56:10,860 - INFO - allennlp.common.params - validation_dataset_reader = None
+2021-04-30 13:56:10,860 - INFO - allennlp.common.params - validation_data_path = data/toxic/val.csv
+2021-04-30 13:56:10,860 - INFO - allennlp.common.params - validation_data_loader = None
+2021-04-30 13:56:10,860 - INFO - allennlp.common.params - test_data_path = data/toxic/test.csv
+2021-04-30 13:56:10,860 - INFO - allennlp.common.params - evaluate_on_test = False
+2021-04-30 13:56:10,860 - INFO - allennlp.common.params - batch_weight_key = 
+2021-04-30 13:56:10,860 - INFO - allennlp.common.params - data_loader.type = multiprocess
+2021-04-30 13:56:10,861 - INFO - allennlp.common.params - data_loader.batch_size = 64
+2021-04-30 13:56:10,861 - INFO - allennlp.common.params - data_loader.drop_last = False
+2021-04-30 13:56:10,861 - INFO - allennlp.common.params - data_loader.shuffle = False
+2021-04-30 13:56:10,861 - INFO - allennlp.common.params - data_loader.batch_sampler = None
+2021-04-30 13:56:10,861 - INFO - allennlp.common.params - data_loader.batches_per_epoch = None
+2021-04-30 13:56:10,861 - INFO - allennlp.common.params - data_loader.num_workers = 0
+2021-04-30 13:56:10,861 - INFO - allennlp.common.params - data_loader.max_instances_in_memory = None
+2021-04-30 13:56:10,861 - INFO - allennlp.common.params - data_loader.start_method = fork
+2021-04-30 13:56:10,861 - INFO - allennlp.common.params - data_loader.cuda_device = None
+2021-04-30 13:56:10,861 - INFO - allennlp.common.params - data_loader.quiet = False
+2021-04-30 13:56:10,868 - INFO - tqdm - loading instances: 0it [00:00, ?it/s]
+2021-04-30 13:56:20,930 - INFO - tqdm - loading instances: 662it [00:10, 48.25it/s]
+2021-04-30 13:56:30,948 - INFO - tqdm - loading instances: 1361it [00:20, 78.16it/s]
+2021-04-30 13:56:40,975 - INFO - tqdm - loading instances: 2138it [00:30, 85.55it/s]
+2021-04-30 13:56:51,025 - INFO - tqdm - loading instances: 2833it [00:40, 50.27it/s]
+2021-04-30 13:57:01,180 - INFO - tqdm - loading instances: 3549it [00:50, 65.29it/s]
+2021-04-30 13:57:11,230 - INFO - tqdm - loading instances: 4250it [01:00, 62.03it/s]
+2021-04-30 13:57:21,241 - INFO - tqdm - loading instances: 4995it [01:10, 56.11it/s]
+2021-04-30 13:57:31,292 - INFO - tqdm - loading instances: 5717it [01:20, 101.74it/s]
+2021-04-30 13:57:41,306 - INFO - tqdm - loading instances: 6487it [01:30, 87.99it/s]
+2021-04-30 13:57:51,321 - INFO - tqdm - loading instances: 7207it [01:40, 46.09it/s]
+2021-04-30 13:58:01,349 - INFO - tqdm - loading instances: 7973it [01:50, 77.98it/s]
+2021-04-30 13:58:11,424 - INFO - tqdm - loading instances: 8740it [02:00, 64.94it/s]
+2021-04-30 13:58:21,480 - INFO - tqdm - loading instances: 9400it [02:10, 69.14it/s]
+2021-04-30 13:58:31,585 - INFO - tqdm - loading instances: 10020it [02:20, 67.89it/s]
+2021-04-30 13:58:41,631 - INFO - tqdm - loading instances: 10625it [02:30, 60.79it/s]
+2021-04-30 13:58:51,819 - INFO - tqdm - loading instances: 11263it [02:40, 50.68it/s]
+2021-04-30 13:59:01,982 - INFO - tqdm - loading instances: 12020it [02:51, 68.48it/s]
+2021-04-30 13:59:12,115 - INFO - tqdm - loading instances: 12892it [03:01, 68.94it/s]
+2021-04-30 13:59:22,229 - INFO - tqdm - loading instances: 13663it [03:11, 73.33it/s]
+2021-04-30 13:59:32,319 - INFO - tqdm - loading instances: 14409it [03:21, 82.75it/s]
+2021-04-30 13:59:42,375 - INFO - tqdm - loading instances: 15210it [03:31, 83.27it/s]
+2021-04-30 13:59:52,519 - INFO - tqdm - loading instances: 16044it [03:41, 94.95it/s]
+2021-04-30 14:00:02,656 - INFO - tqdm - loading instances: 16821it [03:51, 80.17it/s]
