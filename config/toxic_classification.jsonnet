@@ -23,11 +23,10 @@ local dropout = 0.3;
 "train_data_path": "data/toxic/train.csv",
 "validation_data_path": "data/toxic/valid.csv",
 "test_data_path": "data/toxic/test.csv",
-// "vocabulary":{
-//     "type": "from_files", 
-//     "directory": "/Users/puneet/Projects/pytorch/practice/book_nlp/vocab/vocab.tar.gz"
-// },
-
+"vocabulary":{
+    "type": "from_files", 
+    "directory": "/Users/puneet/Projects/pytorch/practice/book_nlp/new_vocab"
+},
 "model":{
     "type": "toxic",
     "text_field_embedder":{
