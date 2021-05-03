@@ -11,7 +11,9 @@ from allennlp.data.fields import TextField, LabelField, ListField
 from allennlp.data.tokenizers import Tokenizer, SpacyTokenizer
 from allennlp.data.token_indexers import TokenIndexer, SingleIdTokenIndexer
 from nltk.corpus import stopwords
-
+from allennlp.data import Vocabulary
+from allennlp.data.batch import Batch
+from allennlp.common.util import ensure_list
 
 def clean_text(text, remove_stopwords=True):
     output = ""
@@ -74,3 +76,25 @@ class ToxicReader(DatasetReader):
             ])
 
             return Instance(fields)
+
+def setup_model(params_file, dataset_file):
+    params = Params.from_file(params_file)
+
+    reader = DatasetReader.from_params(params['dataset_reader'])
+    instances = ensure_list(reader.read(str(dataset_file)))
+
+    if 'vocabulary' in params:
+        vocab_params = params['vocabulary']
+        vocab = Vocabulary.from_params(params=vocab_params, instances=instances)
+    else:
+        vocab = Vocabulary.from_instances(instances)
+    
+    vocab.save_to_files("new_vocab")
+    dataset = Batch(instances)
+    dataset.index_instances(vocab)
+    
+    print(dataset.as_tensor_dict())
+
+if __name__ == '__main__':
+    import sys
+    setup_model(sys.argv[1], sys.argv[2])
