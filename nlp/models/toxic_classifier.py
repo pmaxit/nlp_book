@@ -36,16 +36,15 @@ class ToxicModel(Model):
         initializer(self)
 
     def get_metrics(self, reset: bool = False)->Dict[str, float]:
-        precision, recall , f1 = self.f1.get_metric(reset)
-        return {'precision': precision, 'recall': recall, 'f1': f1}
+        precision, recall , f1, accuracy = self.f1.get_metric(reset)
+        return {'precision': precision, 'recall': recall, 'f1': f1, 'accuracy': accuracy}
 
     def forward(self, 
             text: Dict[str, torch.Tensor],
             labels: torch.LongTensor = None)->Dict[str, torch.Tensor]:
-        
+
         embedded_text = self.text_field_embedder(text)
         mask = util.get_text_field_mask(text)
-
         encoded_text = self.encoder(embedded_text, mask)
 
         logits = self.classifier_feedforward(encoded_text)

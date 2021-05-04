@@ -28,9 +28,12 @@ class MultiLabelF1Measure(Metric):
     def get_metric(self, reset:bool = False):
         predicted_positives = self._true_positives + self._false_positives
         actual_positives = self._true_positives + self._false_negatives
+        accuracy = self._true_positives + self._true_negatives 
+        total_items = (self._true_positives + self._true_negatives + self._false_positives + self._false_negatives)
 
         precision = self._true_positives / predicted_positives if predicted_positives > 0 else 0
         recall = self._true_positives / actual_positives if actual_positives > 0 else 0
+        accuracy = accuracy / total_items if total_items > 0 else 0
 
         if precision + recall > 0:
             f1_measure = 2 * precision * recall / (precision + recall)
@@ -39,7 +42,7 @@ class MultiLabelF1Measure(Metric):
 
         if reset:
             self.reset()
-        return precision, recall, f1_measure
+        return precision, recall, f1_measure, accuracy
 
     def reset(self):
         self._true_positives = 0.0
