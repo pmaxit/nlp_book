@@ -60,7 +60,7 @@ class ToxicReader(DatasetReader):
                         text: str,
                         labels: List[str] = None)->Instance:
         # first clean text
-        #text = clean_text(text)
+        text = clean_text(text)
 
         if self._max_sequence_length is not None:
             text = text[:self._max_sequence_length]

@@ -8,13 +8,12 @@ local dropout = 0.3;
             'type': 'single_id',
             'lowercase_tokens': true
         },
-        "tokens2":{
-		"type": "single_id",
-		"lowercase_tokens": true
-	}
+        "elmo":{
+            "type": "elmo_characters"
+        },
     },
 },
-"train_data_path": "data/toxic/train.csv",
+"train_data_path": "data/toxic/train_sub.csv",
 "validation_data_path": "data/toxic/valid.csv",
 //"test_data_path": "data/toxic/test.csv",
 "vocabulary":{
@@ -27,26 +26,29 @@ local dropout = 0.3;
         "token_embedders":{
             "tokens":{
                 "type": "embedding",
-                //"pretrained_file": "https://s3-us-west-2.amazonaws.com/allennlp/datasets/glove/glove.6B.100d.txt.gz",
-                "pretrained_file": "./junks/crawl-300d-2M.vec",
-                "embedding_dim": 300,
-                "trainable": false
-            },
-	   "tokens2":{
-		"type": "embedding",
                 "pretrained_file": "https://s3-us-west-2.amazonaws.com/allennlp/datasets/glove/glove.6B.100d.txt.gz",
                 "embedding_dim": 100,
-	        "trainable": false
-                
-	    }
+                "trainable": false
+            },
+            "elmo":{
+                "type": "elmo_token_embedder",
+                "options_file": 'https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway/elmo_2x4096_512_2048cnn_2xhighway_options.json',
+                "weight_file": 'https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway/elmo_2x4096_512_2048cnn_2xhighway_weights.hdf5',
+                "do_layer_norm": false,
+                "dropout": 0.0,
+            }
         },
     },
     "encoder":{
-	"type": "bag_of_embeddings",
-        "embedding_dim": 400
+        "type":"lstm",
+        "bidirectional": true,
+        "input_size": 1124,
+        "hidden_size": 100,
+        "num_layers": 2,
+        "dropout": 0.2,
     },
     "classifier_feedforward":{
-        "input_dim": 400,
+        "input_dim": 200,
         "num_layers": 2,
         "hidden_dims": [200, 6],
         "activations": ["tanh", "linear"],
