@@ -40,10 +40,10 @@ class SWEMEncoder(Seq2SeqEncoder):
         
         text_len = tokens.shape[0]
         num_iters = text_len - num-windows + 1
-        pooled_doc_embed = [torch.mean(tokens[i:i+num_windows], axis=0 for i in range(num_iters))]
+        pooled_doc_embed = [torch.mean(tokens[i:i+num_windows], axis=0) for i in range(num_iters)]
 
         return torch.max(pooled_doc_embed, axis=0)
-        
+
     def _average_pooling(self, tokens, mask):
         summed = tokens.sum(1)
 
