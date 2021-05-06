@@ -9,8 +9,8 @@ local dropout = 0.3;
             'lowercase_tokens': true
         },
         "tokens2":{
-		"type": "single_id",
-		"lowercase_tokens": true
+		    "type": "single_id",
+		    "lowercase_tokens": true
 	}
     },
 },
