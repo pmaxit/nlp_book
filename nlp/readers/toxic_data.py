@@ -18,31 +18,41 @@ from overrides import overrides
 import numpy as np
 import torch
 from allennlp.data.fields import TextField, ArrayField
+from nltk.stem import PorterStemmer 
+from nltk.stem import WordNetLemmatizer
 
-def clean_text(text, remove_stopwords=True):
+stop_words = set(stopwords.words('english'))
+
+def clean_text(text, remove_stopwords=False):
     output = ""
     text = str(text).replace("\n","")
     text = re.sub(r'[^\w\s]', '',text).lower()
+    ps = PorterStemmer()
+    wl = WordNetLemmatizer()
     if remove_stopwords:
         text = text.split(" ")
         for word in text:
             if word not in stopwords.words('english'):
                 output = output + " "+ word
     else:
-        output = text
-    return str(output.strip())[1:-3].replace("  "," ")
+        text = text.split(" ")
+        output = [word for word in text if word not in stop_words]
+        output = [wl.lemmatize(o) for o in output]
+        output = " ".join(output)
+    return output.strip()[1:-3].replace("  "," ")
 
 @DatasetReader.register('toxic')
 class ToxicReader(DatasetReader):
     """ Toxic dataset """
     def __init__(self, max_length: int = None, tokenizer: Tokenizer = None,
                 token_indexers: Dict[str, TokenIndexer] = None,
-                fill_in_empty_labels: bool = False) -> None:
+                fill_in_empty_labels: bool = False, clean_text:bool = False) -> None:
         super().__init__()
         self._max_sequence_length = max_length
         self.fill_in_empty_labels = fill_in_empty_labels
         self._tokenizer = tokenizer or WhitespaceTokenizer()
         self._token_indexer = token_indexers or {'tokens': SingleIdTokenIndexer()}
+        self._clean_text = clean_text
 
     @overrides
     def _read(self, file_path: str,skip_header:bool =True)->Iterable[Instance]:
@@ -60,7 +70,8 @@ class ToxicReader(DatasetReader):
                         text: str,
                         labels: List[str] = None)->Instance:
         # first clean text
-        text = clean_text(text)
+        if self._clean_text:
+            text = clean_text(text)
 
         if self._max_sequence_length is not None:
             text = text[:self._max_sequence_length]
@@ -81,7 +92,7 @@ class ToxicReader(DatasetReader):
                 LabelField(int(identity_hate), skip_indexing=True)
             ])
 
-            return Instance(fields)
+        return Instance(fields)
 
 def setup_model(params_file, dataset_file):
     params = Params.from_file(params_file)
