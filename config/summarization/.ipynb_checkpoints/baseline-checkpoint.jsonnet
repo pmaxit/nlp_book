@@ -60,7 +60,7 @@ local MAX_DECODING_STEPS=100;
    },
    "data_loader":{
        "batch_size": BATCH_SIZE,
-       //"max_instances_in_memory": BATCH_SIZE*100,
+       "max_instances_in_memory": BATCH_SIZE*100,
    },
     "trainer":{
         "num_epochs": NUM_EPOCHS,
