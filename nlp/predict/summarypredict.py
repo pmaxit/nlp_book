@@ -6,7 +6,7 @@ from allennlp.models import Model
 from allennlp.predictors.predictor import Predictor
 from overrides import overrides
 
-
+@Predictor.register('news_summary')
 class SummaryPredictor(Predictor):
     def __init__(self,
                  model: Model,

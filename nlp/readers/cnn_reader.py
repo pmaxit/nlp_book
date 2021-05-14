@@ -11,10 +11,11 @@ from allennlp.data.token_indexers import SingleIdTokenIndexer
 from allennlp.common.util import START_SYMBOL, END_SYMBOL
 from allennlp.data.tokenizers import Token
 from allennlp.data.fields import TextField, ArrayField, MetadataField, NamespaceSwappingField
+from allennlp.common.file_utils import cached_path
 
 from allennlp.data import Vocabulary
-
-import datasets
+from overrides import overrides
+import csv
 
 @DatasetReader.register('cnn_dailymail')
 class CNNDailyMailReader(DatasetReader):
@@ -47,15 +48,25 @@ class CNNDailyMailReader(DatasetReader):
         self._save_pgn_fields = save_pgn_fields
 
         self._target_namespace = 'tokens'
-        self.train = datasets.load_dataset(dataset_name,'3.0.0',split='train',)
-        self.val = datasets.load_dataset(dataset_name,'3.0.0', split='validation[:5%]')
 
         if seperate_namespaces:
             self._target_namespace = target_namespace
             second_tokens_indexer = {'tokens': SingleIdTokenIndexer(namespace = target_namespace)}
             self._target_token_indexers = target_token_indexers or second_tokens_indexer
 
-    def _read(self, mode:str)-> Iterable[Instance]:
+    @overrides
+    def _read(self, file_path):
+        with open(cached_path(file_path,extract_archive=True), "r", encoding='ISO-8859-1') as data_file:
+            csv_in = csv.reader(data_file)
+            # skip header
+            next(csv_in)
+            for row in csv_in:
+                yield self.text_to_instance(
+                        source=row[4],
+                        target=row[2]
+                )
+
+    def _read_cnn(self, mode:str)-> Iterable[Instance]:
         
         train_length = len(self.train)
         if self._max_instances:
