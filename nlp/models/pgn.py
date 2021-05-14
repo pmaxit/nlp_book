@@ -15,7 +15,7 @@ from allennlp.modules.token_embedders import Embedding
 from allennlp.modules import Attention
 from allennlp.nn.beam_search import BeamSearch
 from allennlp.nn import util
-
+from overrides import overrides
 
 @Model.register("pgn")
 class PointerGeneratorNetwork(Model):
@@ -94,8 +94,9 @@ class PointerGeneratorNetwork(Model):
                 metadata=None) -> Dict[str, torch.Tensor]:
         
         state = self._encode(source_tokens)
-        target_tokens = target_tokens['tokens']
+        target_tokens = target_tokens['tokens'] if target_tokens else None
         target_tokens_tensor = target_tokens["tokens"].long() if target_tokens else None
+
         extra_zeros, modified_source_tokens, modified_target_tokens = self._prepare(
             source_to_target, source_token_ids, target_tokens_tensor, target_token_ids)
 
@@ -376,7 +377,8 @@ class PointerGeneratorNetwork(Model):
         log_probabilities = torch.log(final_dist + self._eps)
         return log_probabilities, state
 
-    def decode(self, output_dict: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
+    @overrides
+    def make_output_human_readable(self, output_dict: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
         predicted_indices = output_dict["predictions"]
         if not isinstance(predicted_indices, np.ndarray):
             predicted_indices = predicted_indices.detach().cpu().numpy()

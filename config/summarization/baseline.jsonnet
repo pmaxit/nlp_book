@@ -3,7 +3,7 @@ local RNN_DIM=256;
 local RNN_NUM_LAYERS = 2;
 local BEAM_SIZE = 4;
 local LR = 0.001;
-local CUDA_DEVICE= 0;
+local CUDA_DEVICE= -1;
 local vocab_size = 50000;
 local SOURCE_MAX_TOKENS= 400;
 local TARGET_MAX_TOKENS=100;
@@ -28,8 +28,8 @@ local MAX_DECODING_STEPS=100;
     "vocabulary":{
         "max_vocab_size": VOCAB_SIZE
     },
-    "train_data_path": "train",
-    "validation_data_path": "valid",
+    "train_data_path": "https://raw.githubusercontent.com/sunnysai12345/News_Summary/master/news_summary.csv",
+    //"validation_data_path": "valid",
     "model":{
         "type":"pgn",
         "target_namespace":"target_tokens",
