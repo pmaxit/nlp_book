@@ -31,23 +31,23 @@ class CNNDailyMailReader(DatasetReader):
             save_copy_fields: bool = False,
             save_pgn_fields: bool = False,
             lowercase: bool=True,
-            max_instances =None):
+            max_instances =None,
+            source_prefix:str = None):
         super().__init__()
         self._lowercase = lowercase
         self._max_instances = max_instances
         self._dataset_name = dataset_name
         self._source_max_tokens = source_max_tokens
         self._target_max_tokens = target_max_tokens
-
+        self._source_prefix = source_prefix
         self._tokenizer = tokenizer or WhitespaceTokenizer()
 
-        tokens_indexer = {'tokens': SingleIdTokenIndexer(lowercase_tokens=lowercase)}
-        self._source_token_indexers = source_token_indexers or tokens_indexer
-        self._target_token_indexers = target_token_indexers or tokens_indexer
+        self._source_token_indexers = source_token_indexers
+        self._target_token_indexers = target_token_indexers or self._source_token_indexers
         self._save_copy_fields = save_copy_fields
         self._save_pgn_fields = save_pgn_fields
 
-        self._target_namespace = 'tokens'
+        self._target_namespace = 'target_tokens'
 
         if seperate_namespaces:
             self._target_namespace = target_namespace
@@ -95,10 +95,13 @@ class CNNDailyMailReader(DatasetReader):
         def prepare_text(text, max_tokens):
             text = text.lower() if self._lowercase else text
             tokens = self._tokenizer.tokenize(text)[:max_tokens]
-            tokens.insert(0, Token(START_SYMBOL))
-            tokens.append(Token(END_SYMBOL))
+            # tokens.insert(0, Token(START_SYMBOL))
+            # tokens.append(Token(END_SYMBOL))
             return tokens
 
+        # add prefix here
+        if self._source_prefix:
+            source = self._source_prefix + source
         source_tokens = prepare_text(source, self._source_max_tokens)
         source_tokens_indexed = TextField(source_tokens, self._source_token_indexers)
         result = {'source_tokens': source_tokens_indexed}
@@ -145,3 +148,9 @@ class CNNDailyMailReader(DatasetReader):
             result["metadata"] = MetadataField(meta_fields)
         
         return Instance(result)
+
+    @overrides
+    def apply_token_indexers(self, instance: Instance) -> None:
+        instance.fields["source_tokens"]._token_indexers = self._source_token_indexers  # type: ignore
+        if "target_tokens" in instance.fields:
+            instance.fields["target_tokens"]._token_indexers = self._target_token_indexers  # type: ignore
