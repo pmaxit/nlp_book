@@ -30,7 +30,7 @@ local MODEL_NAME = "t5-small";
         "lowercase": true,
         "source_max_tokens": SOURCE_MAX_TOKENS,
         "target_max_tokens": TARGET_MAX_TOKENS,
-        "seperate_namespaces": false,
+        "seperate_namespaces": false    ,
         "save_pgn_fields": false,
         "save_copy_fields": false,
         "source_prefix": "summarize: ",

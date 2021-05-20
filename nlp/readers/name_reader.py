@@ -58,7 +58,7 @@ class NameReader(DatasetReader):
 
         # set max_tokens
         if self._max_tokens is not None:
-            tokens = tokens[- self._max_tokens:]
+            tokens = tokens[-self._max_tokens:]
         
         input_field = TextField(tokens, self._token_indexers)
         fields: Dict[str, Field] = {'tokens': input_field}
