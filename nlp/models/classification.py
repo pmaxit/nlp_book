@@ -30,12 +30,12 @@ class BasicClassifier(Model):
         self._text_field_embedder=text_field_embedder
         self._seq2vec_encoder=seq2vec_encoder
         self._feedforward = feedforward
-
+        
         if feedforward is not None:
             self._classifier_input_dim= feedforward.get_output_dim()
         else:
             self._classifier_input_dim = seq2vec_encoder.get_output_dim()
-
+        self.bn = nn.BatchNorm1d(num_features=self._classifier_input_dim)
         if dropout:
             self._dropout = nn.Dropout(dropout)
         else:
@@ -61,6 +61,8 @@ class BasicClassifier(Model):
         
         if self._feedforward is not None:
             embedded_text = self._feedforward(embedded_text)
+        
+        embedded_text = self.bn(embedded_text)
         
         logits = self._classification_layer(embedded_text)
         probs = F.softmax(logits, dim=1)

@@ -41,11 +41,11 @@ local bert_model = "distilbert-base-uncased";
         "embedding_dim": 768
     },
     "feedforward": {
-        "input_dim": 200,
+        "input_dim": 768,
         "num_layers": 2,
-        "hidden_dims": [300,100],
+        "hidden_dims": [768*2,250],
         "activations": ["relu","relu"],
-        "dropout": [0.35,0.15]
+        "dropout": [0.35,0.35]
     },
     "dropout": dropout,
       "regularizer": {
