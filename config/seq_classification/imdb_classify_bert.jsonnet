@@ -1,14 +1,23 @@
+local batch_size = 32;
+local dropout = 0.3;
+local max_length = 512;
+local bert_model = "distilbert-base-uncased";
+
 {
   "dataset_reader": {
     "type": "my_imdb",
-    "token_indexers": {
-      "tokens": {
-        "type": "single_id",
-        "lowercase_tokens": true
-      }
+    
+     "tokenizer":{
+        "type":"pretrained_transformer",
+        "model_name": bert_model,
+         "max_length": max_length
     },
-    "tokenizer": {
-        "type": "whitespace"
+    "token_indexers":{
+        "bert":{
+            "type": "pretrained_transformer",
+            "model_name": bert_model,
+            "max_length": max_length
+        }
     }
   },
   "train_data_path": "train",
@@ -18,20 +27,17 @@
     "type": "rnn_classifier",
     "text_field_embedder": {
       "token_embedders": {
-        "tokens": {
-          "type": "embedding",
-          "pretrained_file": "https://s3-us-west-2.amazonaws.com/allennlp/datasets/glove/glove.6B.100d.txt.gz",
-          "embedding_dim": 100,
-          "trainable": false
-        }
+                "bert": {
+                    "type": "pretrained_transformer",
+                    "model_name":bert_model,
+                    "last_layer_only": true,
+                    "max_length": max_length
+                }
       }
     },
     "seq2vec_encoder": {
-      "type": "gru",
-      "bidirectional": true,
-      "input_size": 100,
-      "hidden_size": 100,
-      "num_layers": 1
+        "type": "cls_pooler",
+        "embedding_dim": 768
     },
     "feedforward": {
         "input_dim": 200,
@@ -40,7 +46,7 @@
         "activations": ["relu","relu"],
         "dropout": [0.25]
     },
-    "dropout": 0.2,
+    "dropout": dropout,
       "regularizer": {
             "regexes": [
                 [
@@ -55,13 +61,15 @@
   },
   "data_loader": {
     "shuffle":true,
-    "batch_size": 64
+    "batch_size": batch_size,
+    "max_instances_in_memory": 1000,
+
   },
 
   "trainer": {
     "num_epochs": 10,
     "grad_norm": 2.0,
-    "cuda_device": -1,
+    "cuda_device": 0,
     "optimizer": {
             "type": "adam",
             "lr": 0.001,

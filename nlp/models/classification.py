@@ -8,7 +8,7 @@ import torch.nn.functional as F
 
 from allennlp.data import Vocabulary
 from allennlp.models import Model
-from allennlp.modules import Seq2VecEncoder, TextFieldEmbedder
+from allennlp.modules import Seq2VecEncoder, TextFieldEmbedder, FeedForward
 from allennlp.nn import InitializerApplicator
 from allennlp.nn.util import get_text_field_mask
 from allennlp.training.metrics import CategoricalAccuracy
@@ -22,17 +22,24 @@ class RNNClassifier(Model):
             dropout:float=0,
             label_namespace:str='label',
             initializer: InitializerApplicator= InitializerApplicator(),
-            regularizer: Optional[RegularizerApplicator] = None)->None:
+            regularizer: Optional[RegularizerApplicator] = None,
+            feedforward: Optional[FeedForward] = None,
+            )->None:
 
         super().__init__(vocab, regularizer)
         self._text_field_embedder=text_field_embedder
         self._seq2vec_encoder=seq2vec_encoder
-        self._classifier_input_dim=seq2vec_encoder.get_output_dim()
+        self._feedforward = feedforward
+
+        if feedforward is not None:
+            self._classifier_input_dim= feedforward.get_output_dim()
+        else:
+            self._classifier_input_dim = seq2vec_encoder.get_output_dim()
 
         if dropout:
             self._dropout = nn.Dropout(dropout)
         else:
-            self._dropout = lambda x: x
+            self._dropout = None
 
         self._num_labels = vocab.get_vocab_size(namespace=label_namespace)
         self._classification_layer = nn.Linear(self._classifier_input_dim, self._num_labels)
@@ -47,8 +54,15 @@ class RNNClassifier(Model):
         embedded_text= self._text_field_embedder(tokens)
         mask = get_text_field_mask(tokens).float()
 
-        encoded_text = self._dropout(self._seq2vec_encoder(embedded_text, mask=mask))
-        logits = self._classification_layer(encoded_text)
+        embedded_text = self._seq2vec_encoder(embedded_text, mask=mask)
+
+        if self._dropout:
+            embedded_text = self._dropout(embedded_text)
+        
+        if self._feedforward is not None:
+            embedded_text = self._feedforward(embedded_text)
+        
+        logits = self._classification_layer(embedded_text)
         probs = F.softmax(logits, dim=1)
 
         output_dict = {
