@@ -1,5 +1,6 @@
 
-from typing import Dict
+from typing import Dict, Optional
+from allennlp.nn.regularizers import RegularizerApplicator
 
 import torch
 import torch.nn as nn
@@ -20,9 +21,10 @@ class RNNClassifier(Model):
             seq2vec_encoder: Seq2VecEncoder,
             dropout:float=0,
             label_namespace:str='label',
-            initializer: InitializerApplicator= InitializerApplicator())->None:
+            initializer: InitializerApplicator= InitializerApplicator(),
+            regularizer: Optional[RegularizerApplicator] = None)->None:
 
-        super().__init__(vocab)
+        super().__init__(vocab, regularizer)
         self._text_field_embedder=text_field_embedder
         self._seq2vec_encoder=seq2vec_encoder
         self._classifier_input_dim=seq2vec_encoder.get_output_dim()

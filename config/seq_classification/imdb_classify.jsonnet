@@ -33,7 +33,18 @@
       "hidden_size": 100,
       "num_layers": 1
     },
-    "dropout": 0.2
+    "dropout": 0.2,
+      "regularizer": {
+            "regexes": [
+                [
+                    ".*",
+                    {
+                        "type": "l2",
+                        "alpha": 0.001
+                    }
+                ]
+            ]
+        }
   },
   "data_loader": {
     "shuffle":true,
@@ -42,9 +53,20 @@
 
   "trainer": {
     "num_epochs": 10,
+    "grad_norm": 2.0,
     "cuda_device": -1,
     "optimizer": {
-      "type": "adam",
+            "type": "adam",
+            "lr": 0.001,
+            "betas": [
+                0.8,
+                0.999
+            ],
+            "eps": 1e-07
+        },
+    "moving_average": {
+            "type": "exponential",
+            "decay": 0.9999
     }
   }
 }
