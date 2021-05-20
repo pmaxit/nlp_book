@@ -22,9 +22,10 @@ local bert_model = "distilbert-base-uncased";
   },
   "train_data_path": "train",
   "test_data_path": "test",
+  "validation_data_path":"test",
   "evaluate_on_test": true,
   "model": {
-    "type": "rnn_classifier",
+    "type": "seq_classifier",
     "text_field_embedder": {
       "token_embedders": {
                 "bert": {
@@ -44,7 +45,7 @@ local bert_model = "distilbert-base-uncased";
         "num_layers": 2,
         "hidden_dims": [300,100],
         "activations": ["relu","relu"],
-        "dropout": [0.25]
+        "dropout": [0.35,0.15]
     },
     "dropout": dropout,
       "regularizer": {
@@ -53,7 +54,7 @@ local bert_model = "distilbert-base-uncased";
                     ".*",
                     {
                         "type": "l2",
-                        "alpha": 0.001
+                        "alpha": 0.01
                     }
                 ]
             ]
@@ -79,6 +80,9 @@ local bert_model = "distilbert-base-uncased";
             ],
             "eps": 1e-07
         },
+    "validation_metric": "+accuracy",
+    "patience": 3,
+    "num_gradient_accumulation_steps":2,
     "moving_average": {
             "type": "exponential",
             "decay": 0.9999

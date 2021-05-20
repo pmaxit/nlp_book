@@ -15,7 +15,7 @@
   "test_data_path": "test",
   "evaluate_on_test": true,
   "model": {
-    "type": "rnn_classifier",
+    "type": "seq_classifier",
     "text_field_embedder": {
       "token_embedders": {
         "tokens": {
@@ -38,7 +38,7 @@
         "num_layers": 2,
         "hidden_dims": [300,100],
         "activations": ["relu","relu"],
-        "dropout": [0.25]
+        "dropout": [0.35,0.15]    
     },
     "dropout": 0.2,
       "regularizer": {

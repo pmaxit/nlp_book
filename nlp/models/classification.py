@@ -13,8 +13,8 @@ from allennlp.nn import InitializerApplicator
 from allennlp.nn.util import get_text_field_mask
 from allennlp.training.metrics import CategoricalAccuracy
 
-@Model.register('rnn_classifier')
-class RNNClassifier(Model):
+@Model.register('seq_classifier')
+class BasicClassifier(Model):
     def __init__(self,
             vocab: Vocabulary,
             text_field_embedder: TextFieldEmbedder,
