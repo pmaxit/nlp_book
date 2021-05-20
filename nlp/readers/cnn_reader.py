@@ -62,8 +62,8 @@ class CNNDailyMailReader(DatasetReader):
             next(csv_in)
             for row in csv_in:
                 yield self.text_to_instance(
-                        source=row[4],
-                        target=row[2]
+                        source=row[1],
+                        target=row[0]
                 )
 
     def _read_cnn(self, mode:str)-> Iterable[Instance]:

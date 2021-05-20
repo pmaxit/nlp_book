@@ -11,7 +11,7 @@ local VOCAB_SIZE = 50000;
 local NUM_EPOCHS = 10;
 local BATCH_SIZE = 32;
 local MAX_DECODING_STEPS=100;
-local MODEL_NAME = "t5-small";
+local MODEL_NAME = "facebook/bart-base";
 {
     "dataset_reader":{
         "type":"cnn_dailymail",
@@ -42,7 +42,7 @@ local MODEL_NAME = "t5-small";
     "train_data_path": "https://raw.githubusercontent.com/sunnysai12345/News_Summary/master/news_summary_more.csv",
     //"validation_data_path": "valid",
     "model":{
-        "type":"t5",
+        "type": "bart",
         "model_name": MODEL_NAME
    },
    "data_loader":{
@@ -65,5 +65,6 @@ local MODEL_NAME = "t5-small";
         "learning_rate_scheduler": {
             "type": "polynomial_decay",
         },
+        "run_sanity_checks":false
     },
 }
